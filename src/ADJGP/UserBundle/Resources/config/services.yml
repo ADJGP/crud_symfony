@@ -1,0 +1,4 @@
+services:
+#    adjgp_user.example:
+#        class: ADJGP\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

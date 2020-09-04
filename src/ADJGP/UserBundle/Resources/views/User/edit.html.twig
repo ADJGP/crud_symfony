@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+{{ parent() }}
+    <div class="row well mt-3">
+        <div class="col-md-6">
+            <div class="page-header">
+                <h3>Editar Usuario</h3>
+                {{ form_start(form, {'attr': { 'novalidate':'novalidate','role': 'form'}  }) }}
+
+                <div class="form-group">
+                    <label for="">Nombre:</label>
+                    {{ form_widget(form.name,{ 'attr':{ 'class': 'form-control', 'placeholder': 'Ingresa tu nombre' } } ) }}
+                    <span class=" text-danger">{{ form_errors(form.name) }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="">Apellido:</label>
+                    {{ form_widget(form.lastName,{ 'attr':{ 'class': 'form-control', 'placeholder': 'Ingresa tu Apellido' } } ) }}
+                    <span class=" text-danger">{{ form_errors(form.lastName) }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="">Correo electrónico:</label>
+                    {{ form_widget(form.email,{ 'attr':{ 'class': 'form-control', 'placeholder': 'Ingresa tu correo Electronico' } } ) }}
+                    <span class=" text-danger">{{ form_errors(form.email) }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="">Contraseña:</label>
+                    {{ form_widget(form.password,{ 'attr':{ 'class': 'form-control', 'placeholder': 'Crea tu Contraseña' } } ) }}
+                    <span class=" text-danger">{{ form_errors(form.password) }}</span>
+                </div>
+                
+                <div class="checkbox">
+                <label>
+                    {{ form_widget(form.isActive) }} Activo
+                    <span class=" text-danger">{{ form_errors(form.isActive) }}</span>
+                </label>
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.save,{ 'label': 'Actualizar Registro', 'attr':{ 'class': 'btn btn-success' } } ) }}
+                    <a href="{{ path('adjgp_user_index') }}" class="btn btn-danger">Cancelar</a>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            
+        </div>
+        
+    </div>
+{% endblock %}

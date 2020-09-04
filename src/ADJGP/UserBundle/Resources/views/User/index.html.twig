@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<div class="card mt-5">
+    <div class="card-header d-inline-block">
+        <h3>Listado de usuarios</h3>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered" border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Correo Electrónico</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+               {% for user in users %}
+                 
+               <tr id="tr-{{user.id}}">
+                   <td>{{ user.name }}</td>
+                   <td>{{ user.lastName }}</td>
+                   <td>{{ user.email }}</td>
+                   <td>
+                       <a href="{{ path('adjgp_user_view', { 'id': user.id }) }}" class="btn btn-sm btn-info">Ver</a>
+                       <a href="{{ path('adjgp_user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-warning">Editar</a>
+                       <a class="btn btn-sm btn-danger" onclick="deleteUser('{{ user.id }}')">Eliminar</a>
+                   </td>
+               </tr>
+        
+               {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>    
+{% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script>
+    function deleteUser(id) {
+
+        if (confirm('Estas seguro de eliminar este registro?')) {
+
+            $('#tr-' + id).hide();
+
+            $.ajax({
+                type: 'POST',
+                url: "/user/delete/" + id,
+                data: {
+                    '_token': $('input[name=_token]').val(),
+                },
+                success: function (data) {
+
+                    alert(data);
+
+                }
+            });
+        }
+    } 
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+adjgp_user_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ADJGPUserBundle:Default:index }
+
+adjgp_user_index:
+    path:     /user/index
+    defaults: { _controller: ADJGPUserBundle:User:index }
+
+adjgp_user_add:
+    path:     /user/add
+    defaults: { _controller: ADJGPUserBundle:User:add }
+
+adjgp_user_create:
+    path:     /user/create
+    defaults: { _controller: ADJGPUserBundle:User:create }
+    methods: POST
+    
+adjgp_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: ADJGPUserBundle:User:edit }
+
+adjgp_user_update:
+    path:     /user/update/{id}
+    defaults: { _controller: ADJGPUserBundle:User:update }
+    methods: ['POST','PUT']
+
+adjgp_user_view:
+    path:     /user/view/{id}
+    defaults: { _controller: ADJGPUserBundle:User:view }
+
+adjgp_user_delete:
+    path:     /user/delete/{id}
+    defaults: { _controller: ADJGPUserBundle:User:delete }
+    methods: ['POST','DELETE']
+
+adjgp_user_redirect_add:
+    path:     /user/create
+    defaults:
+        _controller: ADJGPUserBundle:User:add
+        path:   /user/add
+        permanent: true
+
+adjgp_user_redirect_edit:
+    path:     /user/update/{id}
+    defaults:
+        _controller: ADJGPUserBundle:User:edit
+        path:   /user/edit/{id}
+        permanent: true
+
+    
